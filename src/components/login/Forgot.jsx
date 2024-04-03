@@ -82,7 +82,7 @@ export const Forgot = () => {
                 code: getRandomNumber()
               }
               //console.log(tempuser)
-              const res = await axios.post("http://192.168.1.169:8080/api/user/reset", tempuser)
+              const res = await axios.post("https://api.jiabaili.shop/api/user/reset", tempuser)
               setLoader(false)
               if(res.data.phonenumber){
                
@@ -117,7 +117,7 @@ export const Forgot = () => {
 
             }else{
                 try{
-                    const res = await axios.post("http://192.168.1.169:8080/apiuser/login",lodinData)
+                    const res = await axios.post("https://api.jiabaili.shop/apiuser/login",lodinData)
                     if(res.data.error){
                         if(res.data.error ===  "No user"){
                             setserver("Phonenumber does not exist")
@@ -151,7 +151,7 @@ export const Forgot = () => {
       const onSubmit = async () => {
         setLoader(true)
         try {
-          const res = await axios.post("http://192.168.1.169:8080/api/user/update/"+value1+"/"+value);
+          const res = await axios.post("https://api.jiabaili.shop/api/user/update/"+value1+"/"+value);
           if(res.data.useravailableOTP){
             setError(true)
             setserver("Invalid Code")
@@ -170,7 +170,7 @@ export const Forgot = () => {
       const onRest = async () => {
         setLoader(true)
         try {
-            const res = await axios.put("http://192.168.1.169:8080/api/user/updateuser/"+value, credentials);
+            const res = await axios.put("https://api.jiabaili.shop/api/user/updateuser/"+value, credentials);
             if(res.data._id){
               const user = {
                 _id: res.data._id,
