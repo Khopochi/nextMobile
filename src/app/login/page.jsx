@@ -1,13 +1,10 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/navbar/Navbar";
-import GoogleAnalytics from "@bradgarropy/next-google-analytics"
-
-const inter = Inter({ subsets: ["latin"] });
+import { MyLogin } from "@/components/login/Login"
+import './loginpage.scss'
+import Link from "next/link"
 
 export const metadata = {
-  title: "Jia Bai Li Supermarket",
-  description: "Experience Excellence: Your Ultimate Destination for Online Shopping!,",
+  title: "Login - Jia Bai Li Supermarket",
+  description: "Login to Experience Excellence: Your Ultimate Destination for Online Shopping!,",
   keywords: "Jiabaili, electronics, hardware, toys, construction, home appliances, fashion, automobile, tools, stationary, online shoping, ",
   icons: {
     icon: '/image/logo.png',
@@ -21,16 +18,16 @@ export const metadata = {
   openGraph: {
     title: 'Jia Bai Li Supermarket',
     description: 'Experience Excellence: Your Ultimate Destination for Online Shopping!',
-    url: 'https://m.jiabaili.shop',
+    url: 'https://mobile.jiabaili.shop',
     siteName: 'Jia Bai Li Supermarket',
     images: [
       {
-        url: 'https://m.jiabaili.shop/image/logo.png', // Must be an absolute URL
+        url: '/image/logo.png', // Must be an absolute URL
         width: 800,
         height: 600,
       },
       {
-        url: 'https://m.jiabaili.shop/image/logo.png', // Must be an absolute URL
+        url: '/image/logo.png', // Must be an absolute URL
         width: 1800,
         height: 1600,
         alt: 'My custom alt',
@@ -41,14 +38,12 @@ export const metadata = {
   },
 }
 
-export default function RootLayout({ children,}) {
+const Login = () => {
   return (
-    <html lang="en">
-
-      <body className={inter.className}>
-        {children}</body>
-        <GoogleAnalytics measurementId="G-MK0VGHSKB3" />
-        
-    </html>
-  );
+    <div className="loginPagee">
+      <MyLogin />
+    </div>
+  )
 }
+
+export default Login

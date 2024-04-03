@@ -1,0 +1,72 @@
+// App.module.scss
+
+$mainColor: #28231D;
+$onHover: #E3242B;
+$amazongreen: #007185;
+$amazon: #f3d078;
+$amazonorange: #FF8F00;
+
+.container1 {
+  background-color: white;
+  color: $mainColor;
+
+  header {
+    h1 {
+      color: $mainColor;
+  padding: 15px;
+
+    }
+
+    p {
+      color: $amazongreen;
+  padding: 15px;
+
+    }
+  }
+
+  main {
+    h2 {
+      color: $mainColor;
+  padding: 15px;
+
+    }
+
+    h3 {
+      color: $amazonorange;
+  padding: 15px;
+
+    }
+
+    p, ul {
+      color: $mainColor;
+  padding: 15px;
+
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+  padding: 15px;
+
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+
+  footer {
+    p {
+      color: $onHover;
+  padding: 15px;
+
+    }
+  }
+
+  
+}
+.homeseperator{
+  width: 100vw;
+  height: 2.5vw;
+  background-color: rgb(224, 221, 221);
+}

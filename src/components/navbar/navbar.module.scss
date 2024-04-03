@@ -1,0 +1,130 @@
+$mainColor: #f53d2d;
+// $mainColor: #28231D;
+$onHover: #E3242B;
+$amazongreen: #007185;
+$amazon: #f3d078;
+$amazonorange: #FF8F00;
+
+.navbar{
+    .containeer{
+        background-color: $mainColor;
+        height: 50vw;
+        color: white;
+        position: relative;
+        .top{
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            position: absolute;
+            width: calc(100% - 30px); // Subtracting 30px for left and right margins
+            top: 20px;
+            left: 15px; // Adjusted left position to align with the left margin
+            right: 15px; // Adjusted right position to align with the right margin
+            z-index: 999;
+            .logo{
+                display: flex;
+                align-items: center;
+                .ourlogo{
+                    width: 7vw;
+                    height: 7vw;
+                  }
+            }
+            .search{
+                flex: 3;
+                // border: 1px solid black;
+                background-color: white;
+                color: black;
+                display: flex;
+                align-items: center;
+                padding-right: 10px;
+                position: relative;
+                .searchresults {
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 100%; /* Set to 100% to position below the .search container */
+                    background-color: white;
+                    z-index: 9999;
+                    .single{
+                      padding: 10px;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      .leftsingle{
+                        font-size: 12px;
+                      }
+                      .rightsingle{
+                        font-size: 10px;
+                        color: $onHover;
+                      }
+                    }
+                  }
+                .input{
+                    flex: 1;
+                    padding: 10px 10px;
+                    border: none;
+                    outline: none;
+                }
+                
+            }
+            .cart{
+                display: flex;
+                align-items: center;
+                position: relative;
+                .countmain{
+                    position: absolute;
+                    top: -5px;
+                    right: 0;
+                    width: 15px;
+                    height: 15px;
+                    font-size: 10px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50%;
+                    background-color: $onHover;
+                }
+                .ourlogo{
+                    width: 5vw;
+                    height: 5vw;
+                  }
+            }
+            .user{
+                display: flex;
+                align-items: center;
+                .ourlogo{
+                    width: 5vw;
+                    height: 5vw;
+                  }
+            }
+
+        }
+    }
+}
+
+
+// styles.module.scss
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 300px; // Set the height of the carousel
+  }
+  
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vw;
+    object-fit: cover;
+    opacity: 0; // Initially hide all slides
+    transition: opacity 0.5s ease; // Add transition for smooth fading
+  }
+  
+  .slide.active {
+    opacity: 1; // Show active slide
+  }
+  
+  

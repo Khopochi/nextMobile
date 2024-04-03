@@ -1,0 +1,24 @@
+.loginPagee{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logo{
+        display: flex;
+        width: 100vw;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        img{
+            width: 10vw;
+            height: 10vw;
+        }
+    }
+    .h11{
+        font-size: 20px;
+        text-align: left;
+        // font-weight: 300;
+        width: calc(80vw + 32px);
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}

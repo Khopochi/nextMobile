@@ -1,0 +1,173 @@
+$mainColor: #28231D;
+$onHover: #E3242B;
+$amazongreen: #007185;
+$amazon: #f3d078;
+$amazonorange: #FF8F00;
+$blue: #00BFFF;
+.productseaerch{
+    width: 100vw;
+    position: relative;
+    .cccover{
+        background-color: lightgray;
+        height: 30vw;
+        margin: 0px 15px;
+        .cccoverinside{
+          width: 100%;
+          z-index: 999;
+          height: 30vw;
+          background-size: cover; /* Adjust as needed */
+          background-position: center; /* Adjust as needed */
+          img{
+            height: 20vw;
+            width: 100%;
+            object-fit: cover;
+            z-index: 999;
+          }
+        }
+
+        
+    }
+    .loading {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .loading::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, transparent 0%, #f0f0f0 50%, transparent 100%);
+      animation: shimmer 1.5s infinite linear;
+      z-index: -1; /* Set the z-index to a value lower than the child elements */
+    }
+    
+    @keyframes shimmer {
+      0% {
+        left: -100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+    .divtitle{
+        margin:5px 15px;
+        color: $onHover;
+    }
+    .sepearter{
+        height: 5px;
+        background-color: rgb(238, 238, 238);
+    }
+    .loader{
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        z-index: 999;
+        background-color: white;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        font-size: 10px;
+    }
+
+    .top {
+        background-color: rgb(238, 238, 238);  // Adjust background color
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-bottom: 10px;
+        position: sticky;
+        top: 0; /* Stick to the top of the container */
+        z-index: 100; /* Adjust z-index as needed */
+        .logoandcounrey{
+          color: black;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding:10px 15px;
+          flex: 1;
+          .logo {
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            .ourlogo{
+              width: 7vw;
+              height: 7vw;
+            }
+            .jiabaili{
+              font-weight:500;
+            }
+          }
+        }
+        .search{
+          border: 1px solid rgb(243, 243, 243);
+          padding: 10px 15px;
+          margin: 0px 10px;
+          display: flex;
+          background-color: white;
+          align-items: center;
+          border-radius: 15px;
+          position: relative;
+          .searchresults {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 100%; /* Set to 100% to position below the .search container */
+            background-color: white;
+            z-index: 9999;
+            .single{
+              padding: 10px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              .leftsingle{
+                font-size: 12px;
+              }
+              .rightsingle{
+                font-size: 10px;
+                color: $onHover;
+              }
+            }
+          }
+          input{
+            flex: 1;
+            border: none;
+            outline: none;
+          }
+          .searchicon{
+            font-size: 20px;
+            cursor: pointer;
+          }
+        }
+      
+        // Example styling for logo and search field
+        
+      
+        .search-field {
+          flex: 1;
+          margin-left: 10px;  // Adjust margin as needed
+        }
+      }
+    .itemsbody{
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+    }
+}
+.staticnavbar{
+    position: sticky;
+    top: 0; /* Stick to the top of the container */
+    z-index: 999;
+}

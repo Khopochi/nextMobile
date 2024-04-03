@@ -1,0 +1,89 @@
+$mainColor: #28231D;
+$onHover: #E3242B;
+$amazongreen: #007185;
+$amazon: #f3d078;
+$amazonorange: #FF8F00;
+.profile-page {
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        background-color: $onHover;
+        padding: 16px;
+
+        h1 {
+            margin: 0;
+            font-size: 13px;
+            color: white;
+        }
+
+        .messages {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            position: relative;
+            .count{
+                position: absolute;
+                right: -8px;
+                top: 1px;
+                background-color: $amazongreen;
+                color: white;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+              }
+
+            span {
+                margin-right: 10px;
+            }
+
+            i {
+                font-size: 24px;
+            }
+        }
+    }
+
+    .profile-content {
+        .section {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+
+            h2 {
+                margin-bottom: 10px;
+                font-size: 13px;
+                color: #333;
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        .orders .order-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 20px;
+
+            .order {
+                padding: 10px;
+                background-color: #f9f9f9;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+        }
+    }
+}
