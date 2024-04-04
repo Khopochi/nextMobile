@@ -689,7 +689,7 @@ const Cart = () => {
             Adding to cart...
         </div>}
       <NavProduct/>
-      <div className="middle">
+      <div className="middlexxx">
         <div className="topperheading">
             <div className="heading">Shopping Cart</div>
             <div className="yutter">{carts.length} items in cart | Total Weight {Math.round(calculateTotalWeight(carts) * 100) / 100} (KGs)</div>

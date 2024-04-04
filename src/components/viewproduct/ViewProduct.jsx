@@ -166,7 +166,7 @@ const ViewProduct = () => {
         try{
             const res = await axios.post("https://api.jiabaili.shop/api/user/addtocart/"+user._id ,datatoPost)
             getCount()
-            setLoader(false)
+            setAddingLoader(false)
             getUser()
             
         }catch(err){
@@ -348,10 +348,10 @@ const ViewProduct = () => {
   //handlce cick
   const addClicked = () => {
     if(user){
-      setLoader(true)
+      setAddingLoader(true)
       addToCart()
     }else{
-      navigate("/login/")
+      router.push("/login/")
     }
   }
 
@@ -410,6 +410,8 @@ const ViewProduct = () => {
 const [loaderr, setLoaderr] = useState(false)
 
 
+const [addingloader, setAddingLoader] = useState(false)
+
   return (
     <>
     {
@@ -427,7 +429,7 @@ const [loaderr, setLoaderr] = useState(false)
         <div className='staticnavbar'>
             <NavProduct />
         </div>
-        {loader && <div className="loaderv">
+        {addingloader && <div className="loadervxxx">
             {/* <BeatLoader color="hsla(351, 84%, 49%, 1)" /> */}
             <BeatLoader color="#E3242B" size={8} />
             Adding to cart...
