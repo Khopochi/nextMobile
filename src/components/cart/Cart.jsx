@@ -217,7 +217,7 @@ const Cart = () => {
 
     const getCartDetaisl = async () => {
         try{
-            const res = await axios.get("https://api.jiabaili.shop/api/user/getcartdetails/"+user._id)
+            const res = await axios.get("https://api.jiabaili.shop/api/user/getcartdetails/"+user._id, {cache:"no-store"})
             setCarts(res.data)
             setLoad(false)
         }catch(err){
@@ -234,7 +234,7 @@ const Cart = () => {
     const getUserCart = async () => {
         setCartLoaded(false)
         try{
-            const res = await axios.get("https://api.jiabaili.shop/api/user/usercarts/"+user._id)
+            const res = await axios.get("https://api.jiabaili.shop/api/user/usercarts/"+user._id, {cache:"no-store"})
             setUserCart(res.data)
             setCartLoaded(true)
         }catch(err){
@@ -312,7 +312,7 @@ const Cart = () => {
             }
             setLoadingTop(true)
             try{
-                const res = await axios.post("https://api.jiabaili.shop/api/transaction/airtel",orderinfo)
+                const res = await axios.post("https://api.jiabaili.shop/api/transaction/airtel",orderinfo, {cache:"no-store"})
 
                 //add this
                 setorderid(res.data.data.transaction.id)
@@ -336,7 +336,7 @@ const Cart = () => {
             setLoadingTop1(true)
             setstd(true)
             try{
-                const res = await axios.post("https://api.jiabaili.shop/api/transaction/stdbank",orderinfo)
+                const res = await axios.post("https://api.jiabaili.shop/api/transaction/stdbank",orderinfo, {cache:"no-store"})
                 setIframe(res.data.order._links.payment.href)
                 setLoadingTop1(false)
 
@@ -354,7 +354,7 @@ const Cart = () => {
       const fetchOrder = async () => {
         try {
           // Assuming you have an API call to fetch user data
-          const response = await axios.get("https://api.jiabaili.shop/api/ordersubmitted/getsinglebyorderid/"+orderid)
+          const response = await axios.get("https://api.jiabaili.shop/api/ordersubmitted/getsinglebyorderid/"+orderid, {cache:"no-store"})
           setUserData(response.data);
         } catch (error) {
           ////////console.error('Error fetching user data:', error);
@@ -365,7 +365,7 @@ const Cart = () => {
         if(orderid){const fetchData = async () => {
           try {
             // Your API call to fetch data
-            const response = await axios.get("https://api.jiabaili.shop/api/ordersubmitted/getsinglebyorderid/"+orderid)
+            const response = await axios.get("https://api.jiabaili.shop/api/ordersubmitted/getsinglebyorderid/"+orderid, {cache:"no-store"})
             setUserData(response.data);
             // Your logic with the fetched data
           } catch (error) {
@@ -417,7 +417,7 @@ const Cart = () => {
       //ending here to add
       useEffect(()=>{
         if(code === "TS"){
-            router.push("/completed/")
+            // router.push("/completed/")
         }
       },[code])
 

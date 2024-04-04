@@ -25,7 +25,7 @@ export const SingleCart = ({data, onDeleteItem}) => {
         setDeleting(true)
         console.log(user._id)
         try{
-            const res = await axios.put("https://api.jiabaili.shop/api/user/removeitem/"+user._id+"/"+data.cartid)
+            const res = await axios.put("https://api.jiabaili.shop/api/user/removeitem/"+user._id+"/"+data.cartid, {cache:"no-store"})
             onDeleteItem(data.cartid)
             setDeleting(false)
             setLoader(false)
