@@ -281,11 +281,12 @@ const Cart = () => {
 
       const [newData,setData] = useState(true)
       const handleRefresh = (id) => {
-        
         const updatedCartItems = carts.filter(item => item.cartid !== id);
-        setCarts(updatedCartItems)
-        getUserCart()
-      }
+        getUserCart().then(() => {
+            setCarts(updatedCartItems);
+        });
+    };
+    
 
 
       //payment options
@@ -299,6 +300,7 @@ const Cart = () => {
 
        
         if(selectedPay === "airtel"){
+          
           //////console.log(calculateTotalSub(carts,cost))
             const orderinfo = {
                 userid: user._id,
@@ -395,7 +397,7 @@ const Cart = () => {
       useEffect(()=>{
             if(userData){
                 if(userData.status === "Paid"){
-                    navigate("/completed/")
+                    router.push("/completed/")
                 }
             }
       },[userData])
@@ -415,7 +417,7 @@ const Cart = () => {
       //ending here to add
       useEffect(()=>{
         if(code === "TS"){
-            // navigate("/completed/")
+            router.push("/completed/")
         }
       },[code])
 
@@ -525,6 +527,11 @@ const Cart = () => {
     }
 
     // const  = selected1.location && selected1.location.toLowerCase().includes('lilongwe');
+    console.log({usercarts: userCart})
+          console.log({carts: carts})
+
+          console.log(calculateTotalSub(userCart, 20))
+          console.log(calculateTotalSub(carts, 20))
   
   return (
     <>
