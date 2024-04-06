@@ -8,7 +8,7 @@ import { BeatLoader } from 'react-spinners';
 import Link from 'next/link'
 
 
-export const SingleCart = ({data, onDeleteItem}) => {
+export const SingleCart = ({user, data, onDeleteItem}) => {
     const formatNumberWithCommas = (value) => {
         return value.toLocaleString('en-US');
       };
@@ -18,9 +18,9 @@ export const SingleCart = ({data, onDeleteItem}) => {
 
       const [loader,setLoader] = useState(false)
       const [deleting, setDeleting] = useState(false)
-      const user = {
-        _id: "65bba67908bbe58ec8a7f1e1"
-      }
+    //   const user = {
+    //     _id: "65bba67908bbe58ec8a7f1e1"
+    //   }
       const onDelete = async () => {
         setDeleting(true)
         console.log(user._id)

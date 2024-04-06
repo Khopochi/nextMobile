@@ -708,7 +708,7 @@ const Cart = () => {
         {carts && <div className="bodyitems">
                             {
                                 carts.map((cart,index)=>(
-                                    <SingleCart key={index} data={cart} onDeleteItem={handleRefresh} /> 
+                                    <SingleCart user={user} key={index} data={cart} onDeleteItem={handleRefresh} /> 
                                 ))
                             }
                         </div>}
