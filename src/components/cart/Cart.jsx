@@ -282,9 +282,8 @@ const Cart = () => {
       const [newData,setData] = useState(true)
       const handleRefresh = (id) => {
         const updatedCartItems = carts.filter(item => item.cartid !== id);
-        getUserCart().then(() => {
-            setCarts(updatedCartItems);
-        });
+        setCarts(updatedCartItems);
+        getUserCart()
     };
     
 
