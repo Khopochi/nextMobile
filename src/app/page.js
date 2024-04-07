@@ -69,19 +69,7 @@ export default async function Home() {
 
 
   return (
-    <>
-     <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        {/* Include Open Graph meta tags */}
-        <meta property="og:title" content={metadata.title} />
-        <meta property="og:description" content={metadata.description} />
-        <meta property="og:image" content={metadata.thumbnail} />
-        <meta property="og:image:width" content="1200" /> {/* Adjust width of the image */}
-        <meta property="og:image:height" content="630" /> {/* Adjust height of the image */}
-        {/* Other metadata tags */}
-      </Head>
-    <div>
+    <div className={styles.mainPageDivControl}>
       <Navbar/>
       <div className={styles.shopdeeSubcategories}>
 
@@ -183,7 +171,7 @@ export default async function Home() {
           </div>
       </div>
       <div className={styles.homeseperator}></div>  
-      <div className={styles.shopediscount}>
+      {/* <div className={styles.shopediscount}>
            <div className={styles.sdiscotop}>
               <h1 className={styles.stleft}>BEST DEALS</h1>
               <div className={styles.stright}> </div>
@@ -195,8 +183,17 @@ export default async function Home() {
                   ))
                }  
            </div>
-        </div>  
+        </div>   */}
       <div className={styles.homeseperator}></div> 
+      
+      {/* <CardCategory  /> */}
+
+      {/* <div className={styles.categoriesAreaList}>
+         {
+         products && <CardCategory  data={products?.[0]}/>
+      }
+      </div> */}
+
       {
          products.map((item,index)=>(
             <div key={index}>
@@ -206,6 +203,5 @@ export default async function Home() {
          ))
       } 
     </div>
-    </>
   );
 }

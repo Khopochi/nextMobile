@@ -4,7 +4,7 @@ import './cardcategory.scss'
 
 const CardCategory = ({data}) => {
   return (
-    <div className='cardcategory'>
+    <div className='cardcategoryt'>
       <div className="cctop">
         <Link href={"/categories/"+data.category._id}><h1 className="cctopleft">{data.category.name}</h1></Link>
         <Link href={"/categories/"+data.category._id}><div className="cctopright"><span>View more</span><div className="ccicon"><img src="/image/chevron-right.svg" /></div></div></Link>
