@@ -12,12 +12,11 @@
   }
 
   .itemsbody{
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
 }
 .staticnavbar{
     position: sticky;

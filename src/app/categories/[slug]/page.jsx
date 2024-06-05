@@ -3,6 +3,7 @@ import './category.scss'
 import CardSubList from "@/components/cardsublist/CardSubList"
 import SearchCard from "@/components/searchcard/SearchCard"
 import Link from "next/link"
+import Subcategory from "@/components/subcategory/Subcategory"
 
 
 
@@ -52,8 +53,6 @@ export async function generateMetadata({params}, parent) {
 
 
 const getProducts = async (id) => {
-   
-
   try{
         const res = await fetch("https://api.jiabaili.shop/api/product/categories/"+id, {cache:"no-store"})
         return res.json()
@@ -62,11 +61,34 @@ const getProducts = async (id) => {
   }
 }
 
+const getDeepCat = async (id) => {
+  try{
+      const res = await fetch("http://localhost:8080/api/product/productsdeepcategoryspecific/"+id, {cache: "no-cache"})
+      return res.json()
+  }catch(err){
+
+  }
+}
+
+const getData = async (id) => {
+  try{
+      const res = await fetch("http://localhost:8080/api/product/aggrgatedID/"+id, {cache: "no-cache"})
+      return res.json()
+  }catch(err){
+
+  }
+}
+
 const Category = async ({params}) => {
   const {slug} = params
-  const products = await getProducts(slug)
-  const myproducts = products.products
-  console.log(slug)
+  // const products = await getProducts(slug)
+  // const myproducts = products.products
+
+  const mydeepcats = await getDeepCat(slug)
+  const data = await getData(slug)
+  const subcategory = data.subcategories
+
+
   return (
     <div>
       <div className="staticnavbar">
@@ -80,22 +102,18 @@ const Category = async ({params}) => {
       <div className="homeseperator"></div>
       <div className="itemsbody">
         {
-          myproducts.map((item,index)=>(
-              <SearchCard key={index} data={item}/>
+          subcategory.map((item,index)=>(
+              <Subcategory key={index} subdata={item} twindeep={data.deepCategoriesWithImages} deepdata={mydeepcats}/>
           ))
         }
       </div>
+
+
+
+
+
       <div className="homeseperator"></div>
-      <div className="pagenation">
-        <div className="prevpagee">
-          <div className="image"> <img src="/image/chevrons-left.svg" alt="" /> </div>
-          <div className="wordleft">Prev</div>
-        </div>
-        <div className="nextpage">
-          <Link href={`/cat/${2}/${slug}`} prefetch={false}><div className="wordleft">Next</div></Link>
-          <div className="image"> <img src="/image/chevrons-right.svg" alt="" /> </div>
-        </div>
-      </div>
+
 
 
 
