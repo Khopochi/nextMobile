@@ -10,7 +10,7 @@ import { BeatLoader } from 'react-spinners'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleRight, faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons'
 
-const page = () => {
+const Page = () => {
     const {slug} = useParams()
     console.log(slug)
 
@@ -111,4 +111,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

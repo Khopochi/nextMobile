@@ -17,6 +17,8 @@ const Navbar = () => {
     const router = useRouter()
     const [user, setUser] = useState()
 
+    
+
 
     useEffect(() => {
       // Check if user is authenticated by accessing user information from local storage
@@ -134,7 +136,7 @@ const Navbar = () => {
                     </div>
                     <div className={styles.search}>
                         <input className={styles.input} id='searchTerm' onKeyDown={handleKeyDown} onChange={handleChange} placeholder='Search item' type="text" />
-                        <div className={styles.searchIcon}><img src='/image/search.svg'/></div>
+                        <div className={styles.searchIcon}><img onClick={()=>router.push("/search/"+credentials.searchTerm)} src='/image/search.svg'/></div>
                         {click && <div className={styles.searchresults}>
                         { searchItems?.map((item,index)=>(
                             <div key={index} onClick={()=>HandleAction(item.key,item._id)} className={styles.single}>

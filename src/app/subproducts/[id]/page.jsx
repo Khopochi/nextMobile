@@ -11,7 +11,7 @@ import "./subproducts.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faHome } from '@fortawesome/free-solid-svg-icons'
 
-const page = () => {
+const Page = () => {
   const {id} = useParams()
     const [data,setData] = useState()
     const [products, setProducts] = useState()
@@ -113,4 +113,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

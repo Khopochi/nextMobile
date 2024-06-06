@@ -33,7 +33,7 @@ const Subcategory = ({subdata,twindeep,deepdata}) => {
        {filteredData && <>
         {
                 filteredData.map((item,index)=>(
-                   <Link href={"/allproducts/"+item._id}> <div key={index} className="lowercatholder">
+                   <Link key={index}  href={"/allproducts/"+item._id}> <div className="lowercatholder">
                         <div className="imagesub">
                             <img src={"https://api.jiabaili.shop/api/photos/"+getNameById(item._id)} alt="" />
                         </div>
