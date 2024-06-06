@@ -25,9 +25,9 @@ const Subcategory = ({subdata,twindeep,deepdata}) => {
             <span className="descri">More categories on {subdata.name}</span>
            
         </div>
-        <div className="uppercatright">
-            view products <FontAwesomeIcon icon={faAngleRight} />
-        </div>
+        <Link href={"/subproducts/"+subdata._id}><div className="uppercatright">
+                view products <FontAwesomeIcon icon={faAngleRight} /> 
+        </div> </Link>
       </div>
       <div  className="lowercat">
        {filteredData && <>

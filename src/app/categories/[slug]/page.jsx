@@ -63,7 +63,7 @@ const getProducts = async (id) => {
 
 const getDeepCat = async (id) => {
   try{
-      const res = await fetch("http://localhost:8080/api/product/productsdeepcategoryspecific/"+id, {cache: "no-cache"})
+      const res = await fetch("https://api.jiabaili.shop/api/product/productsdeepcategoryspecific/"+id, {cache: "no-cache"})
       return res.json()
   }catch(err){
 
@@ -72,7 +72,7 @@ const getDeepCat = async (id) => {
 
 const getData = async (id) => {
   try{
-      const res = await fetch("http://localhost:8080/api/product/aggrgatedID/"+id, {cache: "no-cache"})
+      const res = await fetch("https://api.jiabaili.shop/api/product/aggrgatedID/"+id, {cache: "no-cache"})
       return res.json()
   }catch(err){
 

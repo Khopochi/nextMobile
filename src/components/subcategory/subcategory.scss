@@ -9,7 +9,6 @@
         // padding-left: 16px;
         font-size: 13px;
         // font-weight: 500;
-        // color: #E3242B;
         display: flex;
         justify-content: space-between;
         .uppercatleft{
@@ -17,14 +16,19 @@
             flex-direction: column;
             .title{
                 font-weight: 700;
+                color: #E3242B;
+
             }
             .descri{
                 font-size: 12px;
+                color: gray;
             }
         }
         .uppercatright{
             font-size: 12px;
-            color: gray;
+            // color: gray;
+            color: #E3242B;
+
         }
     }
     .lowercat{

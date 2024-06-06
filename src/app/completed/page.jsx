@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons'
 import './completed.scss'
+import Link from 'next/link'
 
 
 // export const metadata = {
@@ -46,7 +47,7 @@ const Completed = () => {
         <div className="containerpay">
             <div className="icon"><FontAwesomeIcon icon={faCircleCheck} /></div>
             <div className="worder">Payment Successful</div>
-            <div className="worder">go to orders</div>
+            <Link href={"/order"}> <div className="worderbtn">Go to orders</div></Link>
         </div>
       
     </div>
