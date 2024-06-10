@@ -167,11 +167,11 @@ export default async function Home() {
       <div className={styles.homeseperator}></div>
       <div className={styles.someimage}>
           <div className={styles.imageHolder}>
-              <img className={styles.image} height={100}  width={100} src="/image/77.jpg" />
+              <img className={styles.image} height={100}  width={100} src="/image/14.png" />
           </div>
       </div>
       <div className={styles.homeseperator}></div>  
-      {/* <div className={styles.shopediscount}>
+      <div className={styles.shopediscount}>
            <div className={styles.sdiscotop}>
               <h1 className={styles.stleft}>BEST DEALS</h1>
               <div className={styles.stright}> </div>
@@ -183,7 +183,7 @@ export default async function Home() {
                   ))
                }  
            </div>
-        </div>   */}
+        </div>  
       <div className={styles.homeseperator}></div> 
       
       {/* <CardCategory  /> */}

@@ -159,9 +159,9 @@ const Navbar = () => {
                 </div>
         </div>
         <div className={styles.courasel}>
-        <img src="/image/1jia.jpg" alt="Image 1" className={`${styles.slide} ${currentSlide === 1 ? styles.active : ''}`} />
-        <img src="/image/2jia.jpg" alt="Image 2" className={`${styles.slide} ${currentSlide === 2 ? styles.active : ''}`} />
-        <img src="/image/3jia.jpg" alt="Image 3" className={`${styles.slide} ${currentSlide === 3 ? styles.active : ''}`} />
+        <img src="/image/15.jpg" alt="Image 1" className={`${styles.slide} ${currentSlide === 1 ? styles.active : ''}`} />
+        <img src="/image/17.jpg" alt="Image 2" className={`${styles.slide} ${currentSlide === 2 ? styles.active : ''}`} />
+        <img src="/image/16.jpg" alt="Image 3" className={`${styles.slide} ${currentSlide === 3 ? styles.active : ''}`} />
     </div>
     </div>
   )
