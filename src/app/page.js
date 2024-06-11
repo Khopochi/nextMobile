@@ -185,6 +185,12 @@ export default async function Home() {
            </div>
         </div>  
       <div className={styles.homeseperator}></div> 
+      <div className={styles.someimage}>
+          <div className={styles.imageHolder}>
+              <img className={styles.image} height={100}  width={100} src="/image/77.jpg" />
+          </div>
+      </div>
+      <div className={styles.homeseperator}></div> 
       
       {/* <CardCategory  /> */}
 
