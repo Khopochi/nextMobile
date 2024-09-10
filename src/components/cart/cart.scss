@@ -394,6 +394,22 @@ $amazonorange: #FF8F00;
     overflow: auto;  // Allows content to scroll if needed
     padding-bottom: 5vh;
     height: 90vh;
+    position: relative;
+    .hosted{
+      width: 100vw;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      .child{
+        width: 90vw;
+      }
+    }
     // ImageSlider.scss
 
 // ImageSlider.scss

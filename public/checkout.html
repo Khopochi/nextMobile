@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Bank</title>
+    <script src="https://test-nbm.mtf.gateway.mastercard.com/static/checkout/checkout.min.js" data-error="errorCallback" data-cancel="cancelCallback"></script>
+    <script type="text/javascript">
+        function errorCallback(error) {
+            console.log(JSON.stringify(error));
+        }
+
+        function cancelCallback() {
+            console.log('Payment cancelled');
+        }
+
+        window.onload = function() {
+            // Get session ID from URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('sessionId');
+
+            if (sessionId) {
+                Checkout.configure({
+                    session: {
+                        id: sessionId
+                    }
+                });
+
+                // Show the embedded page
+                Checkout.showEmbeddedPage('#embed-target');
+            } else {
+                console.error('No session ID provided');
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="embed-target" style="width: 100%; height: 600px;"></div>
+</body>
+</html>

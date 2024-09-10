@@ -7,10 +7,12 @@ import './cart.scss'
 import { io } from 'socket.io-client';
 import { faCheckSquare, faCircleCheck, faSquare } from '@fortawesome/free-regular-svg-icons';
 import { SingleCart } from '../cartpopy/SingleCart';
+// import { NBM } from '../nbm/NBM';
 import axios from 'axios';
 import { BeatLoader, ClipLoader, FadeLoader } from 'react-spinners';
 import NavProduct from '../secondnav/NavProduct';
 import { useRouter } from 'next/navigation';
+import Hosted from '../nbm/Hosted';
 
 
 
@@ -122,7 +124,7 @@ const Cart = () => {
             const res = await axios.get("https://api.jiabaili.shop/api/product/search/"+credentials.searchTerm)
             setSearchItem(res.data)
             setClick(true)
-            //////console.log(res.data)
+            ////////console.log(res.data)
         }catch(err){
 
         }
@@ -192,13 +194,14 @@ const Cart = () => {
         })
         }
     },[user?._id])
-    ////////console.log(onlineUsers)
+    //////////console.log(onlineUsers)
 
 
     const [code, setCode] = useState(undefined)
     const [codemessage, setMessagecode] = useState()
     const [loadingtop, setLoadingTop] = useState(false)
     const [loadingtop1, setLoadingTop1] = useState(false)
+    const [loadingtop2, setLoadingTop2] = useState(false)
     useEffect(()=>{
         socket.current.on("getMessage", (data)=>{
             setCode(data.code)
@@ -300,14 +303,16 @@ const Cart = () => {
        
         if(selectedPay === "airtel"){
           
-          //////console.log(calculateTotalSub(carts,cost))
+          ////////console.log(calculateTotalSub(carts,cost))
+          let num = parseInt(value, 10); 
+          if(value.length > 5){
             const orderinfo = {
-                userid: user._id,
-                cart: userCart,
-                total: calculateTotalSub(carts,cost),
-                status: "Waiting payment",
-                phone: user.phonenumber,
-                location: selectedl?.location  ? selectedl?.location : "Pick at Shop"
+              userid: user._id,
+              cart: userCart,
+              total: calculateTotalSub(carts,cost),
+              status: "Waiting payment",
+              phone: num,
+              location: selectedl?.location  ? selectedl?.location : "Pick at Shop"
             }
             setLoadingTop(true)
             try{
@@ -318,6 +323,25 @@ const Cart = () => {
             }catch(err){
 
             }
+          }else{
+            const orderinfo = {
+              userid: user._id,
+              cart: userCart,
+              total: calculateTotalSub(carts,cost),
+              status: "Waiting payment",
+              phone: user.phonenumber,
+              location: selectedl?.location  ? selectedl?.location : "Pick at Shop"
+            }
+            setLoadingTop(true)
+            try{
+                const res = await axios.post("https://api.jiabaili.shop/api/transaction/airtel",orderinfo, {cache:"no-store"})
+
+                //add this
+                setorderid(res.data.data.transaction.id)
+            }catch(err){
+
+            }
+          }
         }else if(selectedPay === "STD"){
             const orderinfo = {
                 userid: user._id,
@@ -343,10 +367,35 @@ const Cart = () => {
 
             }
         }
+        //national bank
+        else if(selectedPay === "NBM"){
+          const orderinfo = {
+              userid: user._id,
+              cart: userCart,
+              total: calculateTotalSub(carts,cost),
+              status: "Waiting payment",
+              phone: user.phonenumber,
+              location: selectedl?.location  ? selectedl?.location : "Pick at Shop"
+          }
+          setLoadingTop2(true)
+          setstd(true)
+          try{
+              const res = await axios.post("http://192.168.1.169:8080/api/transaction/nbm",orderinfo, {cache:"no-store"})
+              // setIframe(res.data.order._links.payment.href)
+              setLoadingTop2(false)
+              console.log(res.data)
+              setnbmsession(res.data.session.id)
+
+          }catch(err){
+
+          }
+      }
+
       }
       const [std,setstd] = useState(false)
+      const [nbmsession, setnbmsession] = useState()
 
-      ////////console.log(userCart)
+      //////////console.log(userCart)
       const [orderid, setorderid] = useState()
       const [userData, setUserData] = useState(null);
       // Function to fetch user data based on userId
@@ -356,7 +405,7 @@ const Cart = () => {
           const response = await axios.get("https://api.jiabaili.shop/api/ordersubmitted/getsinglebyorderid/"+orderid, {cache:"no-store"})
           setUserData(response.data);
         } catch (error) {
-          ////////console.error('Error fetching user data:', error);
+          //////////console.error('Error fetching user data:', error);
         }
       };
 
@@ -368,7 +417,7 @@ const Cart = () => {
             setUserData(response.data);
             // Your logic with the fetched data
           } catch (error) {
-            ////////console.error('Error fetching data:', error);
+            //////////console.error('Error fetching data:', error);
             // Handle the error as needed
           }
         };
@@ -380,18 +429,18 @@ const Cart = () => {
         // Cleanup: Stop the interval after 1 minute (60,000 milliseconds)
         const timeoutId = setTimeout(() => {
           clearInterval(intervalId);
-          ////////console.log('Interval stopped after 1 minute');
+          //////////console.log('Interval stopped after 1 minute');
         }, 60000);
     
         // Return cleanup function
         return () => {
           clearInterval(intervalId);
           clearTimeout(timeoutId);
-          ////////console.log('Cleanup: Interval cleared');
+          //////////console.log('Cleanup: Interval cleared');
         };}
       }, [orderid]);
 
-      ////////console.log(userData)
+      //////////console.log(userData)
 
       useEffect(()=>{
             if(userData){
@@ -426,7 +475,7 @@ const Cart = () => {
       })
 
       const SerachFu = async () => {
-        //////console.log(searchterm.term)
+        ////////console.log(searchterm.term)
           const res = await axios.get("https://api.jiabaili.shop/api/SHIPPING/SEARCH/"+searchterm.term)
           setSearch(res.data)
       }
@@ -474,7 +523,7 @@ const Cart = () => {
     useEffect(()=>{
         if(selectedl?._id.length > 0){
             setcost(calculateCost(selectedl.charge, calculateTotalWeight(carts)))
-            //////console.log(calculateCost(selectedl.charge, calculateTotalWeight(carts)))
+            ////////console.log(calculateCost(selectedl.charge, calculateTotalWeight(carts)))
         }
     },[selectedl])
 
@@ -526,11 +575,11 @@ const Cart = () => {
     }
 
     // const  = selected1.location && selected1.location.toLowerCase().includes('lilongwe');
-    console.log({usercarts: userCart})
-          console.log({carts: carts})
+    //console.log({usercarts: userCart})
+          //console.log({carts: carts})
 
-          console.log(calculateTotalSub(userCart, 20))
-          console.log(calculateTotalSub(carts, 20))
+          //console.log(calculateTotalSub(userCart, 20))
+          //console.log(calculateTotalSub(carts, 20))
   
   return (
     <>
@@ -563,6 +612,20 @@ const Cart = () => {
             {!code && <div className="onloading">
                     <span className="icon"><ClipLoader color="#E3242B" /></span>
                     <span className="word">Conneting to Standard Bank...</span>
+            </div>}
+            {(code === "TF") && <div className="onfaled">
+                    <span className="icon"><FontAwesomeIcon className="icon" icon={faCircleExclamation} /></span>
+                    <span className="failed">Failed: {codemessage} </span>
+            </div>}
+            {(code === "TS") && <div className="onSuccess">
+                    <span className="icon"><FontAwesomeIcon className="icon" icon={faCircleCheck} /></span>
+                    <span className="failed">Payment received</span>
+            </div>}
+        </div>}
+        {loadingtop2 &&  <div className="airtelpage">
+            {!code && <div className="onloading">
+                    <span className="icon"><ClipLoader color="#E3242B" /></span>
+                    <span className="word">Conneting to National Bank...</span>
             </div>}
             {(code === "TF") && <div className="onfaled">
                     <span className="icon"><FontAwesomeIcon className="icon" icon={faCircleExclamation} /></span>
@@ -661,6 +724,14 @@ const Cart = () => {
                                 )}</span>
                                 <span onClick={()=>setPayOption("STD")} className="wordpay">Standard Bank</span>
                             </span>
+                            {/* <span className="optionpay">
+                                <span onClick={()=>setPayOption("NBM")} className="iconpay">{selectedPay === 'NBM' ? (
+                                    <FontAwesomeIcon icon={faCheckSquare} />
+                                ) : (
+                                    <FontAwesomeIcon icon={faSquare} />
+                                )}</span>
+                                <span onClick={()=>setPayOption("NBM")} className="wordpay">National Bank</span>
+                            </span> */}
 
                         </div>
         </div>}
@@ -696,6 +767,12 @@ const Cart = () => {
         </div>}
       <NavProduct/>
       <div className="middlexxx">
+       { nbmsession && <div className="hosted">
+          <div className="child">
+          <Hosted sessionID={nbmsession}/>
+          </div>
+        </div>}
+        
         <div className="topperheading">
             <div className="heading">Shopping Cart</div>
             <div className="yutter">{carts.length} items in cart | Total Weight {Math.round(calculateTotalWeight(carts) * 100) / 100} (KGs)</div>
@@ -714,7 +791,7 @@ const Cart = () => {
         </div>
 
       </div>
-      {(carts.length > 0) && <div className="bottom">
+      {((carts.length > 0) && !nbmsession) && <div className="bottom">
           <div className="buttom-items">
               <span className='kkmwk'>MWK</span> {formatNumberWithCommas(calculateTotal(carts))}
           </div>

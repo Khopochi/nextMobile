@@ -69,7 +69,13 @@ export default async function Home() {
 
 
   return (
-    <div className={styles.mainPageDivControl}>
+   <>
+      <div className={styles.redirect}>
+            <Link href="https://d.jiabaili.shop" passHref>
+               <button>Click Here to Switch to Desktop Version for a Better Experience</button>
+            </Link>
+      </div>
+      <div className={styles.mainPageDivControl}>
       <Navbar/>
       <div className={styles.shopdeeSubcategories}>
 
@@ -209,5 +215,6 @@ export default async function Home() {
          ))
       } 
     </div>
+   </>
   );
 }
